@@ -11,13 +11,6 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(spades);
     }
-    public void EnemyDeath(GameObject theEnemy)
-    {
-        foreach (GameObject theTower in GameObject.FindGameObjectsWithTag("Tower"))
-        {
-           theTower.GetComponentInChildren<Tower>().OnEnemyDeath(theEnemy);
-        }
-    }
 
     public void PlayerHurt(float damage)
     {

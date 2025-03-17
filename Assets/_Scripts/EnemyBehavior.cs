@@ -12,9 +12,11 @@ public class EnemyBehavior : MonoBehaviour
     public bool debuffImmune = false;
     public float distance = 0f;
 
+
     private SpriteRenderer theRenderer;
     private int nextWaypoint = 1;
     private GameManager gameManager;
+    private bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,17 +57,21 @@ public class EnemyBehavior : MonoBehaviour
 
     public void takeDamage(float amount)
     {
-        health -= amount;
+        health -= amount - resist;
         if (health <= 0)
         {
+           
             destroyThis();
         }
     }
 
     private void destroyThis()
     {
-        gameManager.EnemyDeath(gameObject);
-        gameManager.SpawnSpades();
-        Destroy(gameObject);
+        if (!dead)
+        {
+            dead = true;
+            gameManager.SpawnSpades();
+            Destroy(gameObject);
+        }
     }
 }

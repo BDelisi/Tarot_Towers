@@ -24,25 +24,26 @@ public class Tower : MonoBehaviour
         } else if (enemies.Count > 0)
         {
             GameObject target = null;
-            foreach (GameObject enemy in enemies)
+            float farthestDistance = 0;
+            for (int i = 0; i < enemies.Count; i++)
             {
-                float farthestDistance = 0;
-                if (enemy.GetComponent<EnemyBehavior>().distance > farthestDistance)
+                GameObject enemy = enemies[i];
+                if (enemy != null)
                 {
-                    target = enemy;
-                }    
+                    if (enemy.GetComponent<EnemyBehavior>().distance > farthestDistance)
+                    {
+                        target = enemy;
+                    }
+                }
+                else
+                {
+                    enemies.Remove(enemy);
+                    i--;
+                }
             }
             GameObject temp = Instantiate(projectile, transform.position, Quaternion.identity);
             temp.GetComponent<Projectile>().aimAt(target);
             Cd = attackCd;
-        }
-    }
-
-    public void OnEnemyDeath(GameObject theEnemy)
-    {
-        if (enemies.Contains(theEnemy))
-        {
-            enemies.Remove(theEnemy);
         }
     }
 

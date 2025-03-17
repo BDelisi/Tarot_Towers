@@ -6,7 +6,16 @@ public class Projectile : MonoBehaviour
 {
     public float damage = 1f;
     public float speed = 1f;
+    public float lifespan = 5f;
 
+    private void Update()
+    {
+        lifespan -= Time.deltaTime;
+        if (lifespan <= 0 )
+        {
+            Destroy(gameObject);
+        }
+    }
     public void aimAt(GameObject target)
     {
         if (target == null)
@@ -33,6 +42,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            gameObject.SetActive(false);
             collision.GetComponent<EnemyBehavior>().takeDamage(damage);
             Destroy(gameObject);
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 806616851370435807}
   - component: {fileID: 3209478101168079496}
   m_Layer: 0
-  m_Name: Spades
+  m_Name: Clubs
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -138702225
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1567632980, guid: 4ddeceb470f337f439159442b1c01e63, type: 3}
+  m_Sprite: {fileID: -1526720791, guid: 4ddeceb470f337f439159442b1c01e63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -181,9 +181,9 @@ MonoBehaviour:
   - {x: 6.5, y: 1.5, z: 0}
   - {x: 4.5, y: 1.5, z: 0}
   - {x: 4.5, y: 5.5, z: 0}
-  speed: 4
-  health: 5
-  resist: 0
-  damage: 1
+  speed: 3
+  health: 6
+  resist: 0.5
+  damage: 2
   debuffImmune: 0
   distance: 0
