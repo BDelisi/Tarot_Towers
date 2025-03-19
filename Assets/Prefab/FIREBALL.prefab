@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6840262026872837142}
   - component: {fileID: 2115601079491729545}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: FIREBALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   damage: 1
   speed: 15
   lifespan: 5
-  spawnAoe: 0
-  AOE: {fileID: 0}
+  spawnAoe: 1
+  AOE: {fileID: 8289201067774705691, guid: fac57851717eb414992a53f53faa4f18, type: 3}
 --- !u!1 &4044631330542608434
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,13 +149,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4044631330542608434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.38268343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6257248665799856538}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &576106603474592986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ SpriteRenderer:
   m_SortingLayerID: -138702225
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 931165005, guid: 07b773d09f3f09540a2fb3fec7497245, type: 3}
+  m_Sprite: {fileID: -1645913814, guid: 4b5b3161076f42b498439453acf41e26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

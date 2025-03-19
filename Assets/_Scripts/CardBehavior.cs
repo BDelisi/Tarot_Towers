@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class CardBehavior : MonoBehaviour
 {
-   
-    public Vector3 defaultLocation = Vector3.zero;
     public GameObject tower;
     public GameObject spawnTester;
+    public DeckManager deckManager;
     private bool touchingMouse = false;
     private bool dragging = false;
+
+    private void Start()
+    {
+        deckManager = gameObject.GetComponentInParent<DeckManager>();
+    }
 
     private void Update()
     {
         if (!dragging)
         {
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            transform.position = defaultLocation;
             if (touchingMouse)
             {
-                gameObject.transform.localScale = new Vector3 (.75f, .75f, .75f);
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                gameObject.transform.localScale = new Vector3 (1.1f, 1.1f, 1.1f);
             } else
             {
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 gameObject.transform.localScale = Vector3.one;
             }
         }
@@ -49,7 +53,7 @@ public class CardBehavior : MonoBehaviour
         {
             placeTower();
         }
-        dragging= false;
+        dragging = false;
     }
 
     private void OnMouseExit()
@@ -66,7 +70,12 @@ public class CardBehavior : MonoBehaviour
         if(test.GetComponent<SpawnTester>().CheckForValidSpawn())
         {
             Instantiate(tower, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            deckManager.PlayCard(gameObject);
+        } else
+        {
+            deckManager.UpdateHandPos();
         }
         Destroy(test);
+        touchingMouse = false;
     }
 }

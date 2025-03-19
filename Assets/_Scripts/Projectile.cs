@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     public float damage = 1f;
     public float speed = 1f;
     public float lifespan = 5f;
+    public bool spawnAoe = false;
+    public GameObject AOE;
 
     private void Update()
     {
@@ -45,6 +47,10 @@ public class Projectile : MonoBehaviour
             gameObject.SetActive(false);
             collision.GetComponent<EnemyBehavior>().takeDamage(damage);
             Destroy(gameObject);
+            if (spawnAoe)
+            {
+                Instantiate(AOE, transform.position, Quaternion.identity);
+            }
         }
     }
 }

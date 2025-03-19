@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -29,8 +31,9 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[nextWaypoint], Time.deltaTime * speed);
-        distance += Time.deltaTime * speed;
+        Vector3 locationToMoveTo = Vector3.MoveTowards(transform.position, waypoints[nextWaypoint], Time.deltaTime * speed);
+        distance += Vector3.Distance(transform.position, locationToMoveTo);
+        transform.position = locationToMoveTo;
         if ( waypoints[nextWaypoint].x - transform.position.x < -.01f)
         {
             theRenderer.flipX = false;
@@ -70,7 +73,14 @@ public class EnemyBehavior : MonoBehaviour
         if (!dead)
         {
             dead = true;
-            gameManager.SpawnSpades();
+            if ((int)UnityEngine.Random.Range(0, 2) == 1)
+            {
+                gameManager.SpawnSpades();
+            }
+            else
+            {
+                gameManager.SpawnClubs();
+            }
             Destroy(gameObject);
         }
     }
